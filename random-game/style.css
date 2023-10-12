@@ -94,6 +94,71 @@ h1 {
     transition: all .3s;
 }
 
+.box_2 {
+    background-color: #FFCD4B;
+    color: #141E46;
+}
+
+.box_4 {
+    background-color: #FD841F;
+    color: #141E46;
+}
+
+.box_8 {
+    background-color: #FF7676;
+    color: #141E46;
+}
+
+.box_16 {
+    background-color: #FF4B91;
+    color: #141E46;
+}
+
+.box_32 {
+    background-color: #E14D2A;
+    color: #141E46;
+}
+
+.box_64 {
+    background-color: #FF6969;
+    color: #141E46;
+}
+
+.box_128 {
+    background-color: #BB2525;
+    color: #F5F5F5;
+}
+
+.box_256 {
+    background-color: #A73121;
+    color: #F5F5F5;
+}
+
+.box_512 {
+    background-color: #952323;
+    color: #F5F5F5;
+}
+
+.box_1024 {
+    background-color: #662549;
+    color: #F5F5F5;
+}
+
+.box_2048 {
+    background-color: #451952;
+    color: #F5F5F5;
+}
+
+.box_4096 {
+    background-color: #3D0C11;
+    color: #F5F5F5;
+}
+
+.box_8192 {
+    background-color: #1B090B;
+    color: #F5F5F5;
+}
+
 .game_box {
     border-radius: 1vmin;
     background-color: #4D4C7D;
