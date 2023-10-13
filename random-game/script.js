@@ -11,10 +11,10 @@ window.addEventListener('load', setGameBox);
 
 function setGameBox() {
     boxGame = [
-        [2, 2, 2, 0],
         [2, 2, 0, 0],
-        [0, 2, 0, 0],
-        [4, 4, 8, 0]
+        [2, 2, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0]
     ];
 
     for (let i = 0; i < rowsBox; i++) {
@@ -93,7 +93,25 @@ document.addEventListener('keyup', (e) => {
                 updateCell(cell, numInBox);
             }
         }
+    } else if (e.code === "ArrowDown") {
+        for (let i = 0; i < columnsBox; i++) {
+            let column = [boxGame[0][i], boxGame[1][i], boxGame[2][i], boxGame[3][i]];
+            column.reverse();
+            column = sliderBox(column);
+            column.reverse();
+            boxGame[0][i] = column[0];
+            boxGame[1][i] = column[1];
+            boxGame[2][i] = column[2];
+            boxGame[3][i] = column[3];
+
+            for (let j = 0; j < rowsBox; j++) {
+                let cell = document.getElementById(`${i}-${j}`);
+                let numInBox = boxGame[i][j];
+                updateCell(cell, numInBox);
+            }
+        }
     }
+    console.log(e.code);
 })
 
 function sliderBox(row) {
