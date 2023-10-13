@@ -67,7 +67,6 @@ h1 {
 }
 
 .game_wrapper {
-    position: relative;
     display: grid;
     grid-template-columns: repeat(4, 15vmin);
     grid-template-rows: repeat(4, 15vmin);
@@ -75,23 +74,17 @@ h1 {
     border-radius: 1vmin;
 }
 
-.box_content {
-    --positionX: 2;
-    --positionY: 1;
-    position: absolute;
-    width: 15vmin;
-    height: 15vmin;
-    top: calc(var(--positionY) * (15vmin + 2vmin));
-    left: calc(var(--positionX) * (15vmin + 2vmin));
+.game_box {
     border-radius: 1vmin;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: 900;
     font-size: 50px;
-    background-color: #FFCD4B;
-    color: #141E46;
-    transition: all .3s;
+}
+
+.color_basic {
+    background-color: #4D4C7D;
 }
 
 .box_2 {
@@ -157,11 +150,6 @@ h1 {
 .box_8192 {
     background-color: #1B090B;
     color: #F5F5F5;
-}
-
-.game_box {
-    border-radius: 1vmin;
-    background-color: #4D4C7D;
 }
 
 .footer {
