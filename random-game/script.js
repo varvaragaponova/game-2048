@@ -78,6 +78,21 @@ document.addEventListener('keyup', (e) => {
                 updateCell(cell, numInBox);
             }
         }
+    } else if (e.code === "ArrowUp") {
+        for (let i = 0; i < columnsBox; i++) {
+            let column = [boxGame[0][i], boxGame[1][i], boxGame[2][i], boxGame[3][i]];
+            column = sliderBox(column);
+            boxGame[0][i] = column[0];
+            boxGame[1][i] = column[1];
+            boxGame[2][i] = column[2];
+            boxGame[3][i] = column[3];
+
+            for (let j = 0; j < rowsBox; j++) {
+                let cell = document.getElementById(`${i}-${j}`);
+                let numInBox = boxGame[i][j];
+                updateCell(cell, numInBox);
+            }
+        }
     }
 })
 
