@@ -214,12 +214,22 @@ function setNewCellNumber(isNewGame) {
 }
 
 function isGameOver() {
-    if (boxGame.flat(2).includes(0)) {
-        return;
+    let possibleMoves = 0;
+    for(let i = 0; i < rowsBox; i++) {
+        for(let j = 0; j < columnsBox; j++) {
+            if (i !== rowsBox - 1 && boxGame[i+1][j] === boxGame[i][j]) {
+                possibleMoves++;
+            }
+            if (j !== columnsBox - 1 && boxGame[i][j + 1] === boxGame[i][j]) {
+                possibleMoves++;
+            }
+        }
     }
 
-    overlay.classList.add('overlay_add');
-    gameOverModalWindow.classList.add('game-over_visible');
+    if (possibleMoves === 0 && !boxGame.flat(2).includes(0)) {
+        overlay.classList.add('overlay_add');
+        gameOverModalWindow.classList.add('game-over_visible');
+    }
 }
 
 function startNewGame() {
