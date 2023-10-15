@@ -88,8 +88,9 @@ document.addEventListener('keyup', (e) => {
             boxGame[3][i] = column[3];
 
             for (let j = 0; j < rowsBox; j++) {
-                let cell = document.getElementById(`${i}-${j}`);
-                let numInBox = boxGame[i][j];
+                let cell = document.getElementById(`${j}-${i}`);
+                let numInBox = boxGame[j][i];
+                console.log(numInBox);
                 updateCell(cell, numInBox);
             }
         }
@@ -105,8 +106,8 @@ document.addEventListener('keyup', (e) => {
             boxGame[3][i] = column[3];
 
             for (let j = 0; j < rowsBox; j++) {
-                let cell = document.getElementById(`${i}-${j}`);
-                let numInBox = boxGame[i][j];
+                let cell = document.getElementById(`${j}-${i}`);
+                let numInBox = boxGame[j][i];
                 updateCell(cell, numInBox);
             }
         }
