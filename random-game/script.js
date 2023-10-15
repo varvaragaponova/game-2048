@@ -186,10 +186,10 @@ function setNewCellNumber(isNewGame) {
                 if (randomNumber === 0) {
                     boxGame[numberForRow][numberForColumn] = 2;
 
-                    if (isNewGame) {
-                        score += 2;
-                        scoreNumber.innerText = 2;
-                    }
+                    // if (isNewGame) {
+                    //     score += 2;
+                    //     scoreNumber.innerText = 2;
+                    // }
 
                     let cell = document.getElementById(`${numberForRow}-${numberForColumn}`);
                     cell.innerText = "2";
@@ -198,10 +198,10 @@ function setNewCellNumber(isNewGame) {
                 } else {
                     boxGame[numberForRow][numberForColumn] = 4;
 
-                    if (isNewGame) {
-                        score += 4;
-                        scoreNumber.innerText = 4;
-                    }
+                    // if (isNewGame) {
+                    //     score += 4;
+                    //     scoreNumber.innerText = 4;
+                    // }
 
                     let cell = document.getElementById(`${numberForRow}-${numberForColumn}`);
                     cell.innerText = "4";
@@ -242,4 +242,6 @@ function startNewGame() {
         }
     };
     setNewCellNumber();
+    score = 0;
+    scoreNumber.innerText = 0;
 }
