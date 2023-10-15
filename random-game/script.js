@@ -11,8 +11,8 @@ window.addEventListener('load', setGameBox);
 
 function setGameBox() {
     boxGame = [
-        [2, 2, 0, 0],
-        [2, 2, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 0],
         [0, 0, 0, 0],
         [0, 0, 0, 0]
     ];
@@ -29,6 +29,8 @@ function setGameBox() {
             cell.setAttribute('id', `${i}-${j}`);
         }
     }
+
+    setNewCellNumber();
 }
 
 function updateCell(cell, numInBox) {
@@ -64,6 +66,7 @@ document.addEventListener('keyup', (e) => {
                 updateCell(cell, numInBox);
             }
         }
+        // setNewCellNumber();
     } else if (e.code === "ArrowRight") {
         for (let i = 0; i < rowsBox; i++) {
             let row = boxGame[i];
@@ -78,6 +81,7 @@ document.addEventListener('keyup', (e) => {
                 updateCell(cell, numInBox);
             }
         }
+        // setNewCellNumber();
     } else if (e.code === "ArrowUp") {
         for (let i = 0; i < columnsBox; i++) {
             let column = [boxGame[0][i], boxGame[1][i], boxGame[2][i], boxGame[3][i]];
@@ -94,6 +98,7 @@ document.addEventListener('keyup', (e) => {
                 updateCell(cell, numInBox);
             }
         }
+        // setNewCellNumber();
     } else if (e.code === "ArrowDown") {
         for (let i = 0; i < columnsBox; i++) {
             let column = [boxGame[0][i], boxGame[1][i], boxGame[2][i], boxGame[3][i]];
@@ -111,8 +116,10 @@ document.addEventListener('keyup', (e) => {
                 updateCell(cell, numInBox);
             }
         }
+        // setNewCellNumber();
     }
-    console.log(e.code);
+    setNewCellNumber();
+    // console.log(e.code);
 })
 
 function sliderBox(row) {
@@ -132,4 +139,47 @@ function sliderBox(row) {
     } while (row.length < columnsBox);
 
     return row;
+}
+
+function setNewCellNumber() {
+
+    let isCellEmpty;
+
+    for (let i = 0; i <rowsBox; i++) {
+        for (let j = 0; j < columnsBox; j++) {
+            if(boxGame[i][j] === 0) {
+                isCellEmpty = true;
+            } else {
+                isCellEmpty = false;
+            }
+        }
+    }
+
+    if (!isCellEmpty) {
+        return;
+    } else {
+        let isAvailablePlaceFounded = false;
+
+        while (!isAvailablePlaceFounded) {
+            let numberForRow = Math.floor(Math.random() * rowsBox);
+            let numberForColumn = Math.floor(Math.random() * columnsBox);
+
+            if (boxGame[numberForRow][numberForColumn] === 0) {
+                let randomNumber = Math.round(Math.random(0, 1));
+                if (randomNumber === 0) {
+                    boxGame[numberForRow][numberForColumn] = 2;
+                    let cell = document.getElementById(`${numberForRow}-${numberForColumn}`);
+                    cell.innerText = "2";
+                    cell.classList.add("box_2");
+                    isAvailablePlaceFounded = true;
+                } else {
+                    boxGame[numberForRow][numberForColumn] = 4;
+                    let cell = document.getElementById(`${numberForRow}-${numberForColumn}`);
+                    cell.innerText = "4";
+                    cell.classList.add("box_4");
+                    isAvailablePlaceFounded = true;
+                }
+            }
+        }
+    }
 }
