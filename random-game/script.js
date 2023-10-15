@@ -2,6 +2,7 @@ const gameWrapper = document.querySelector('.game_wrapper');
 const overlay = document.querySelector('.overlay');
 const gameOverModalWindow = document.querySelector('.game-over');
 const newGameBtn = document.querySelector('.game-over_btn');
+const scoreNumber = document.querySelector('.score_number');
 
 let boxGame;
 
@@ -126,6 +127,7 @@ document.addEventListener('keyup', (e) => {
         }
         // setNewCellNumber();
     }
+    scoreNumber.innerText = `${score}`;
     setNewCellNumber();
     isGameOver();
     // console.log(e.code);
@@ -138,6 +140,7 @@ function sliderBox(row) {
         if (row[i] === row[i + 1]) {
             row[i] = row[i] * 2;
             row[i + 1] = 0;
+            score += row[i];
         }
     }
 
@@ -184,12 +187,14 @@ function setNewCellNumber() {
                     boxGame[numberForRow][numberForColumn] = 2;
                     let cell = document.getElementById(`${numberForRow}-${numberForColumn}`);
                     cell.innerText = "2";
+                    score = 2;
                     cell.classList.add("box_2");
                     isAvailablePlaceFounded = true;
                 } else {
                     boxGame[numberForRow][numberForColumn] = 4;
                     let cell = document.getElementById(`${numberForRow}-${numberForColumn}`);
                     cell.innerText = "4";
+                    score = 4;
                     cell.classList.add("box_4");
                     isAvailablePlaceFounded = true;
                 }
