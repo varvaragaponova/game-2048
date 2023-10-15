@@ -25,10 +25,12 @@ body {
 }
 
 h1 {
+    margin-bottom: 15px;
     font-size: 50px;
     font-style: italic;
     color: #F5F5F5;
     text-shadow: 5px 5px #4D4C7D;
+    text-align: center;
 }
 
 .main {
@@ -173,4 +175,51 @@ h1 {
 .year {
     font-size: 30px;
     color: #F5F5F5;
+}
+
+@media screen and (max-width: 860px) {
+    .game_box {
+        font-size: 40px;
+    }
+
+    .year {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .game_box {
+        font-size: 35px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .game_box {
+        font-size: 30px;
+    }
+
+    h1,
+    .game_name {
+        font-size: 35px;
+    }
+
+    .score {
+        font-size: 20px;
+    }
+
+    .img_school {
+        height: 35px;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .game_box {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .game_box {
+        font-size: 20px;
+    }
 }

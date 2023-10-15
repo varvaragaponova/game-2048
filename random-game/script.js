@@ -94,7 +94,7 @@ document.addEventListener('keyup', (e) => {
             for (let j = 0; j < rowsBox; j++) {
                 let cell = document.getElementById(`${j}-${i}`);
                 let numInBox = boxGame[j][i];
-                console.log(numInBox);
+                // console.log(numInBox);
                 updateCell(cell, numInBox);
             }
         }
@@ -143,17 +143,19 @@ function sliderBox(row) {
 
 function setNewCellNumber() {
 
-    let isCellEmpty;
+    let isCellEmpty = true;
 
-    for (let i = 0; i <rowsBox; i++) {
+    for (let i = 0; i < rowsBox; i++) {
         for (let j = 0; j < columnsBox; j++) {
-            if(boxGame[i][j] === 0) {
+            if(boxGame[i][j] == 0) {
                 isCellEmpty = true;
             } else {
                 isCellEmpty = false;
             }
         }
     }
+
+    // console.log(isCellEmpty);
 
     if (!isCellEmpty) {
         return;
@@ -166,6 +168,7 @@ function setNewCellNumber() {
 
             if (boxGame[numberForRow][numberForColumn] === 0) {
                 let randomNumber = Math.round(Math.random(0, 1));
+                // console.log(randomNumber, 111);
                 if (randomNumber === 0) {
                     boxGame[numberForRow][numberForColumn] = 2;
                     let cell = document.getElementById(`${numberForRow}-${numberForColumn}`);
