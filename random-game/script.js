@@ -7,7 +7,10 @@ let score = 0;
 const rowsBox = 4;
 const columnsBox = 4;
 
-window.addEventListener('load', setGameBox);
+window.addEventListener('load', () => {
+    setGameBox();
+    alert("Игра всё ещё в процессе разработки, буду благодарна, если посмотрите через несколько дней =)");
+});
 
 function setGameBox() {
     boxGame = [
@@ -134,9 +137,9 @@ function sliderBox(row) {
 
     row = row.filter(item => item!== 0);
 
-    do {
+    while (row.length < columnsBox) {
         row.push(0);
-    } while (row.length < columnsBox);
+    };
 
     return row;
 }
