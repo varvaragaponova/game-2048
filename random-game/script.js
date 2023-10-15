@@ -39,7 +39,7 @@ function setGameBox() {
         }
     }
 
-    setNewCellNumber();
+    setNewCellNumber(true);
 }
 
 function updateCell(cell, numInBox) {
@@ -155,7 +155,7 @@ function sliderBox(row) {
     return row;
 }
 
-function setNewCellNumber() {
+function setNewCellNumber(isNewGame) {
 
     let isCellEmpty = true;
 
@@ -185,16 +185,26 @@ function setNewCellNumber() {
                 // console.log(randomNumber, 111);
                 if (randomNumber === 0) {
                     boxGame[numberForRow][numberForColumn] = 2;
+
+                    if (isNewGame) {
+                        score += 2;
+                        scoreNumber.innerText = 2;
+                    }
+
                     let cell = document.getElementById(`${numberForRow}-${numberForColumn}`);
                     cell.innerText = "2";
-                    score = 2;
                     cell.classList.add("box_2");
                     isAvailablePlaceFounded = true;
                 } else {
                     boxGame[numberForRow][numberForColumn] = 4;
+
+                    if (isNewGame) {
+                        score += 4;
+                        scoreNumber.innerText = 4;
+                    }
+
                     let cell = document.getElementById(`${numberForRow}-${numberForColumn}`);
                     cell.innerText = "4";
-                    score = 4;
                     cell.classList.add("box_4");
                     isAvailablePlaceFounded = true;
                 }
