@@ -1,4 +1,7 @@
 const gameWrapper = document.querySelector('.game_wrapper');
+const overlay = document.querySelector('.overlay');
+const gameOverModalWindow = document.querySelector('.game-over');
+const newGameBtn = document.querySelector('.game-over_btn');
 
 let boxGame;
 
@@ -11,6 +14,8 @@ window.addEventListener('load', () => {
     setGameBox();
     alert("Игра всё ещё в процессе разработки, буду благодарна, если посмотрите через несколько дней =)");
 });
+
+newGameBtn.addEventListener('click', startNewGame);
 
 function setGameBox() {
     boxGame = [
@@ -122,6 +127,7 @@ document.addEventListener('keyup', (e) => {
         // setNewCellNumber();
     }
     setNewCellNumber();
+    isGameOver();
     // console.log(e.code);
 })
 
@@ -141,6 +147,8 @@ function sliderBox(row) {
         row.push(0);
     };
 
+    // console.log(boxGame);
+    // isGameOver();
     return row;
 }
 
@@ -188,4 +196,25 @@ function setNewCellNumber() {
             }
         }
     }
+}
+
+function isGameOver() {
+    if (boxGame.flat(2).includes(0)) {
+        return;
+    }
+
+    overlay.classList.add('overlay_add');
+    gameOverModalWindow.classList.add('game-over_visible');
+}
+
+function startNewGame() {
+    overlay.classList.remove('overlay_add');
+    gameOverModalWindow.classList.remove('game-over_visible');
+    for (let i = 0; i < rowsBox; i++) {
+        for (let j = 0; j < columnsBox; j++) {
+            boxGame[i][j] = 0;
+            updateCell(document.getElementById(`${i}-${j}`), 0);
+        }
+    };
+    setNewCellNumber();
 }
