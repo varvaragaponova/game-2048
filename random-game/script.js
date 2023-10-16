@@ -194,6 +194,7 @@ function setNewCellNumber(isNewGame) {
                     let cell = document.getElementById(`${numberForRow}-${numberForColumn}`);
                     cell.innerText = "2";
                     cell.classList.add("box_2");
+                    cell.style = 'transition: all .5s';
                     isAvailablePlaceFounded = true;
                 } else {
                     boxGame[numberForRow][numberForColumn] = 4;
@@ -206,6 +207,7 @@ function setNewCellNumber(isNewGame) {
                     let cell = document.getElementById(`${numberForRow}-${numberForColumn}`);
                     cell.innerText = "4";
                     cell.classList.add("box_4");
+                    cell.style = 'transition: all .5s';
                     isAvailablePlaceFounded = true;
                 }
             }
