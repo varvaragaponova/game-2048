@@ -3,6 +3,11 @@ const overlay = document.querySelector('.overlay');
 const gameOverModalWindow = document.querySelector('.game-over');
 const newGameBtn = document.querySelector('.game-over_btn');
 const scoreNumber = document.querySelector('.score_number');
+const resultText = document.querySelector('.result_number');
+const winnerModalWindow = document.querySelector('.winner');
+const continueBtn = document.querySelector('.continue_btn');
+const winnerScore = document.querySelector('.winner_number');
+const newGameButton = document.querySelector('.new-game_btn');
 
 let boxGame;
 
@@ -11,12 +16,25 @@ let score = 0;
 const rowsBox = 4;
 const columnsBox = 4;
 
+// let resultGameArr = [];
+
 window.addEventListener('load', () => {
     setGameBox();
     alert("Игра всё ещё в процессе разработки, буду благодарна, если посмотрите через несколько дней =)");
 });
 
 newGameBtn.addEventListener('click', startNewGame);
+
+newGameButton.addEventListener('click', () => {
+    overlay.classList.remove('overlay_add');
+    winnerModalWindow.classList.remove('winner_add');
+    startNewGame();
+});
+
+continueBtn.addEventListener('click', () => {
+    overlay.classList.remove('overlay_add');
+    winnerModalWindow.classList.remove('winner_add');
+})
 
 function setGameBox() {
     boxGame = [
@@ -60,6 +78,8 @@ function updateCell(cell, numInBox) {
     if (numInBox > 0) {
         cell.innerText = numInBox;
     };
+
+    isWinner(cell);
 }
 
 document.addEventListener('keyup', (e) => {
@@ -231,6 +251,7 @@ function isGameOver() {
     if (possibleMoves === 0 && !boxGame.flat(2).includes(0)) {
         overlay.classList.add('overlay_add');
         gameOverModalWindow.classList.add('game-over_visible');
+        resultText.innerText = score;
     }
 }
 
@@ -246,4 +267,20 @@ function startNewGame() {
     setNewCellNumber();
     score = 0;
     scoreNumber.innerText = 0;
+    isFinish = false;
+}
+
+let isFinish = false;
+
+function isWinner(cell) {
+    if (!isFinish) {
+        if(cell.classList.contains('box_2048')) {
+            overlay.classList.add('overlay_add');
+            winnerModalWindow.classList.add('winner_add');
+            winnerScore.innerText = score;
+            isFinish = true;
+        }
+    }
+
+    return;
 }

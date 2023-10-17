@@ -13,10 +13,29 @@
     </header>
     <main class="main">
         <div class="overlay"></div>
+
         <div class="game-over">
             <p class="game-over_text">Game over</p>
+            <p class="lost_text">You lose</p>
+            <div class="result">Your score: <spam class="result_number"></spam></div>
             <button class="game-over_btn">New game</button>
         </div>
+
+        <div class="winner">
+            <div class="wrapper_text">
+                <img src="./assets/cute-puppy.gif" alt="winner confetti" class="winner_img">
+                <p class="game-over_text">YOU WON</p>
+                <img src="./assets/cute-puppy.gif" alt="winner confetti" class="winner_img">
+            </div>
+            <p class="winner_text">You have collected 2048!</p>
+            <div class="winner_result">Your score: <spam class="winner_number"></spam></div>
+            <div class="ask">Would you like to continue?</div>
+            <div class="btns_wrapper">
+                <button class="continue_btn btn">Continue</button>
+                <button class="new-game_btn btn">New game</button>
+            </div>
+        </div>
+
         <div class="game_content">
             <h2 class="game_name">2048</h2>
             <div class="score">
