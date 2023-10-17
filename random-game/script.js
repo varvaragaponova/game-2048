@@ -16,7 +16,7 @@ let score = 0;
 const rowsBox = 4;
 const columnsBox = 4;
 
-// let resultGameArr = [];
+let resultGameArr = [];
 
 window.addEventListener('load', () => {
     setGameBox();
@@ -82,7 +82,9 @@ function updateCell(cell, numInBox) {
     isWinner(cell);
 }
 
-document.addEventListener('keyup', (e) => {
+document.addEventListener('keyup', onKeyUp);
+
+function onKeyUp(e) {
     if (e.code === "ArrowLeft") {
         for (let i = 0; i < rowsBox; i++) {
             let row = boxGame[i];
@@ -151,7 +153,7 @@ document.addEventListener('keyup', (e) => {
     setNewCellNumber();
     isGameOver();
     // console.log(e.code);
-})
+}
 
 function sliderBox(row) {
     row = row.filter(item => item!== 0);
@@ -252,6 +254,8 @@ function isGameOver() {
         overlay.classList.add('overlay_add');
         gameOverModalWindow.classList.add('game-over_visible');
         resultText.innerText = score;
+        document.removeEventListener('keyup', onKeyUp);
+        setLocalStorage();
     }
 }
 
@@ -268,6 +272,7 @@ function startNewGame() {
     score = 0;
     scoreNumber.innerText = 0;
     isFinish = false;
+    document.addEventListener('keyup', onKeyUp);
 }
 
 let isFinish = false;
@@ -282,5 +287,16 @@ function isWinner(cell) {
         }
     }
 
+    document.addEventListener('keyup', onKeyUp);
     return;
+}
+
+function setLocalStorage() {
+    let item = JSON.parse(localStorage.getItem('result'));
+
+    if (item) {
+        localStorage.setItem('result', JSON.stringify([...item, score]));
+    } else {
+        localStorage.setItem('result', JSON.stringify([score]));
+    }
 }

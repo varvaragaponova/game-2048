@@ -41,6 +41,7 @@ h1 {
 
 .game_content {
     display: flex;
+    margin-bottom: 15px;
     justify-content: space-between;
 }
 
