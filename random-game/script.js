@@ -10,7 +10,10 @@ const winnerScore = document.querySelector('.winner_number');
 const newGameButton = document.querySelector('.new-game_btn');
 const openRatingBtn = document.querySelector('.rating_btn');
 const ratingTable = document.querySelector('.rating-table');
-const closeBtn = document.querySelector('.close');
+const closeBtn = document.querySelector('.rating_close');
+const helpModalWindow = document.querySelector('.help');
+const helpCloseBtn = document.querySelector('.help_close');
+const helpOpenBtn = document.querySelector('.ask_btn');
 
 let boxGame;
 
@@ -353,5 +356,16 @@ function setDataInTable() {
     })
 }
 
-// setDataInTable();
+function openHelpModalWindow() {
+    helpModalWindow.classList.add('help_visible');
+    overlay.classList.add('overlay_add');
+}
+
+function closeHelpModalWindow() {
+    helpModalWindow.classList.remove('help_visible');
+    overlay.classList.remove('overlay_add');
+}
+
+helpOpenBtn.addEventListener('click', openHelpModalWindow);
+helpCloseBtn.addEventListener('click', closeHelpModalWindow);
 

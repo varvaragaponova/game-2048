@@ -326,7 +326,8 @@ h1 {
 
 /*RATING TABLE*/
 
-.rating-table {
+.rating-table,
+.help {
     position: fixed;
     width: 300px;
     height: auto;
@@ -344,7 +345,8 @@ h1 {
     transition: all .3s;
 }
 
-.rating-table_visible {
+.rating-table_visible,
+.help_visible {
     z-index: 2;
     opacity: 1;
     transition: all .3s;
@@ -398,6 +400,30 @@ th {
 .ask-play_img,
 .rating_img {
     width: 30px;
+}
+
+/*HELP MODAL WINDOW*/
+
+.arrow_img {
+    width: 30px;
+}
+
+.how_play,
+.how_view {
+    margin-bottom: 10px;
+    font-size: 25px;
+    text-align: center;
+    color: #952323;
+}
+
+.arrow_wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.img_wrapper {
+    display: flex;
+    flex-direction: column;
 }
 
 @media (any-hover: hover) {
