@@ -85,6 +85,11 @@ function updateCell(cell, numInBox) {
 document.addEventListener('keyup', onKeyUp);
 
 function onKeyUp(e) {
+
+    if (e.code !== "ArrowLeft" && e.code !== "ArrowRight" && e.code !== "ArrowUp" && e.code !=="ArrowDown") {
+        return;
+    }
+
     if (e.code === "ArrowLeft") {
         for (let i = 0; i < rowsBox; i++) {
             let row = boxGame[i];
@@ -299,4 +304,5 @@ function setLocalStorage() {
     } else {
         localStorage.setItem('result', JSON.stringify([score]));
     }
+    console.log(localStorage.getItem('result'));
 }
