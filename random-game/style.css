@@ -481,6 +481,14 @@ th {
     .img_school {
         height: 35px;
     }
+
+    .rating {
+        gap: 5px;
+    }
+
+    .game_content {
+        gap: 10px;
+    }
 }
 
 @media screen and (max-width: 440px) {
