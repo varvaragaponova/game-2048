@@ -14,9 +14,13 @@ const closeBtn = document.querySelector('.rating_close');
 const helpModalWindow = document.querySelector('.help');
 const helpCloseBtn = document.querySelector('.help_close');
 const helpOpenBtn = document.querySelector('.ask_btn');
+const tableBody = document.querySelector('tbody');
+const volumeBtn = document.querySelector('.volume');
+const volumeBtnNone = document.querySelector('.volume_none');
+const haveVolumeBtn = document.querySelector('.volume_visible');
 
 let boxGame;
-
+let audio = new Audio();
 let score = 0;
 
 const rowsBox = 4;
@@ -27,6 +31,7 @@ let resultGameArr = [];
 window.addEventListener('load', () => {
     setGameBox();
     alert("Игра всё ещё в процессе разработки, буду благодарна, если посмотрите через несколько дней =)");
+    playAudio();
 });
 
 newGameBtn.addEventListener('click', startNewGame);
@@ -45,6 +50,11 @@ continueBtn.addEventListener('click', () => {
 openRatingBtn.addEventListener('click', openRatingTable);
 
 closeBtn.addEventListener('click', closeRatingTable);
+
+helpOpenBtn.addEventListener('click', openHelpModalWindow);
+helpCloseBtn.addEventListener('click', closeHelpModalWindow);
+
+volumeBtn.addEventListener('click', removeVolumeAudio);
 
 function setGameBox() {
     boxGame = [
@@ -333,8 +343,6 @@ function closeRatingTable() {
     ratingTable.classList.remove('rating-table_visible');
 }
 
-const tableBody = document.querySelector('tbody');
-
 function setDataInTable() {
     getLocalStorage();
     tableBody.innerHTML = "";
@@ -366,6 +374,20 @@ function closeHelpModalWindow() {
     overlay.classList.remove('overlay_add');
 }
 
-helpOpenBtn.addEventListener('click', openHelpModalWindow);
-helpCloseBtn.addEventListener('click', closeHelpModalWindow);
+function playAudio() {
+    audio.src = './assets/derevnja-durakov-soundtrack-kalambur.mp3';
+    audio.play();
+    audio.loop = true;
+}
 
+function removeVolumeAudio() {
+    if(audio && volumeBtn.classList.contains("volume_visible")) {
+        audio.muted = true;
+        volumeBtn.classList.remove("volume_visible");
+        volumeBtn.classList.add("volume_none");
+    } else if(audio && volumeBtn.classList.contains("volume_none")) {
+        audio.muted = false;
+        volumeBtn.classList.add("volume_visible");
+        volumeBtn.classList.remove("volume_none");
+    }
+}

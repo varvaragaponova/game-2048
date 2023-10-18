@@ -402,6 +402,23 @@ th {
     width: 30px;
 }
 
+.volume {
+    height: 35px;
+    width: 30px;
+    background-color: transparent;
+    border: none;
+    background-repeat: no-repeat;
+    background-size: 30px;
+}
+
+.volume_visible {
+    background-image: url('./assets/volume-max-svgrepo.svg');
+}
+
+.volume_none {
+    background-image: url('./assets/volume-xmark-svgrepo.svg');
+}
+
 /*HELP MODAL WINDOW*/
 
 .arrow_img {
