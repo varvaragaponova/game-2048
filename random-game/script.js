@@ -322,7 +322,7 @@ getLocalStorage();
 function openRatingTable() {
     overlay.classList.add('overlay_add');
     ratingTable.classList.add('rating-table_visible');
-    setDataInTable()
+    setDataInTable();
 }
 
 function closeRatingTable() {
@@ -333,15 +333,16 @@ function closeRatingTable() {
 const tableBody = document.querySelector('tbody');
 
 function setDataInTable() {
+    getLocalStorage();
     tableBody.innerHTML = "";
 
-    if (resultArr.length == 0) {
+    if (resultArr?.length == 0) {
         return;
     }
 
-    let resultArrSort = resultArr.sort((a, b) => b - a).slice(0, 10);
+    let resultArrSort = resultArr?.sort((a, b) => b - a).slice(0, 10);
 
-    resultArrSort.forEach(item => {
+    resultArrSort?.forEach(item => {
         let tr = document.createElement('tr');
         tableBody.appendChild(tr);
 
@@ -352,5 +353,5 @@ function setDataInTable() {
     })
 }
 
-setDataInTable();
+// setDataInTable();
 
