@@ -8,6 +8,9 @@ const winnerModalWindow = document.querySelector('.winner');
 const continueBtn = document.querySelector('.continue_btn');
 const winnerScore = document.querySelector('.winner_number');
 const newGameButton = document.querySelector('.new-game_btn');
+const openRatingBtn = document.querySelector('.rating_btn');
+const ratingTable = document.querySelector('.rating-table');
+const closeBtn = document.querySelector('.close');
 
 let boxGame;
 
@@ -35,6 +38,10 @@ continueBtn.addEventListener('click', () => {
     overlay.classList.remove('overlay_add');
     winnerModalWindow.classList.remove('winner_add');
 })
+
+openRatingBtn.addEventListener('click', openRatingTable);
+
+closeBtn.addEventListener('click', closeRatingTable);
 
 function setGameBox() {
     boxGame = [
@@ -102,7 +109,6 @@ function onKeyUp(e) {
                 updateCell(cell, numInBox);
             }
         }
-        // setNewCellNumber();
     } else if (e.code === "ArrowRight") {
         for (let i = 0; i < rowsBox; i++) {
             let row = boxGame[i];
@@ -117,7 +123,6 @@ function onKeyUp(e) {
                 updateCell(cell, numInBox);
             }
         }
-        // setNewCellNumber();
     } else if (e.code === "ArrowUp") {
         for (let i = 0; i < columnsBox; i++) {
             let column = [boxGame[0][i], boxGame[1][i], boxGame[2][i], boxGame[3][i]];
@@ -134,7 +139,6 @@ function onKeyUp(e) {
                 updateCell(cell, numInBox);
             }
         }
-        // setNewCellNumber();
     } else if (e.code === "ArrowDown") {
         for (let i = 0; i < columnsBox; i++) {
             let column = [boxGame[0][i], boxGame[1][i], boxGame[2][i], boxGame[3][i]];
@@ -152,7 +156,6 @@ function onKeyUp(e) {
                 updateCell(cell, numInBox);
             }
         }
-        // setNewCellNumber();
     }
     scoreNumber.innerText = `${score}`;
     setNewCellNumber();
@@ -278,6 +281,7 @@ function startNewGame() {
     scoreNumber.innerText = 0;
     isFinish = false;
     document.addEventListener('keyup', onKeyUp);
+    setDataInTable();
 }
 
 let isFinish = false;
@@ -292,6 +296,7 @@ function isWinner(cell) {
         }
     }
 
+    setDataInTable();
     document.addEventListener('keyup', onKeyUp);
     return;
 }
@@ -304,5 +309,40 @@ function setLocalStorage() {
     } else {
         localStorage.setItem('result', JSON.stringify([score]));
     }
-    console.log(localStorage.getItem('result'));
+}
+
+let resultArr;
+
+function getLocalStorage() {
+    resultArr = JSON.parse(localStorage.getItem('result'));
+}
+
+getLocalStorage();
+
+function openRatingTable() {
+    overlay.classList.add('overlay_add');
+    ratingTable.classList.add('rating-table_visible');
+    setDataInTable()
+}
+
+function closeRatingTable() {
+    overlay.classList.remove('overlay_add');
+    ratingTable.classList.remove('rating-table_visible');
+}
+
+const tableBody = document.querySelector('tbody');
+
+function setDataInTable() {
+    tableBody.innerHTML = "";
+    let resultArrSort = resultArr.sort((a, b) => b - a).slice(0, 10);
+
+    resultArrSort.forEach(item => {
+        let tr = document.createElement('tr');
+        tableBody.appendChild(tr);
+
+        let td = document.createElement('td');
+        td.classList.add('table_line');
+        td.textContent = item;
+        tr.appendChild(td);
+    })
 }

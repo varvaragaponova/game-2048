@@ -9,7 +9,6 @@ html {
 }
 
 body {
-    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -325,6 +324,82 @@ h1 {
     width: 140px;
 }
 
+/*RATING TABLE*/
+
+.rating-table {
+    position: fixed;
+    width: 300px;
+    height: auto;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F9DEC9;
+    border-radius: 1vmin;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0;
+    transition: all .3s;
+}
+
+.rating-table_visible {
+    z-index: 2;
+    opacity: 1;
+    transition: all .3s;
+}
+
+th,
+td {
+    width: 200px;
+    height: 35px;
+    border: 1px solid #E14D2A;
+    text-align: center;
+    color: #001253;
+    font-size: 22px;
+    border-radius: 1vmin;
+}
+
+th {
+    color: #5B1018;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.rating {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.close {
+    background-color: transparent;
+    border: none;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    transition: all .3s;
+}
+
+.close_img {
+    width: 100%;
+}
+
+.button {
+    height: 35px;
+    background-color: transparent;
+    border: none;
+    transition: all .3s;
+}
+
+.ask-play_img,
+.rating_img {
+    width: 30px;
+}
+
 @media (any-hover: hover) {
     .game-over_btn:hover,
     .btn:hover {
@@ -333,8 +408,19 @@ h1 {
         font-size: 18px;
         transition: all .3s;
     }
-}
 
+    .button:hover {
+        cursor: pointer;
+        scale: 1.2;
+        transition: all .3s;
+    }
+
+    .close:hover {
+        cursor: pointer;
+        scale: 1.1;
+        transition: all .3s;
+    }
+}
 
 @media screen and (max-width: 860px) {
     .game_box {
