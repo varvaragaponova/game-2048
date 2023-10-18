@@ -281,7 +281,7 @@ function startNewGame() {
     scoreNumber.innerText = 0;
     isFinish = false;
     document.addEventListener('keyup', onKeyUp);
-    setDataInTable();
+    // setDataInTable();
 }
 
 let isFinish = false;
@@ -296,7 +296,7 @@ function isWinner(cell) {
         }
     }
 
-    setDataInTable();
+    // setDataInTable();
     document.addEventListener('keyup', onKeyUp);
     return;
 }
@@ -334,6 +334,11 @@ const tableBody = document.querySelector('tbody');
 
 function setDataInTable() {
     tableBody.innerHTML = "";
+
+    if (resultArr.length == 0) {
+        return;
+    }
+
     let resultArrSort = resultArr.sort((a, b) => b - a).slice(0, 10);
 
     resultArrSort.forEach(item => {
@@ -346,3 +351,6 @@ function setDataInTable() {
         tr.appendChild(td);
     })
 }
+
+setDataInTable();
+
